@@ -1,5 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-restricted-globals */
+
+// const { resolve } = require('path')
 const DOMGlobals = ['window', 'document']
 const NodeGlobals = ['module', 'require']
 
@@ -45,6 +47,23 @@ module.exports = {
       'ObjectExpression > SpreadElement',
       'ObjectPattern > RestElement',
       'AwaitExpression'
+    ],
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: [
+          'vue',
+          '@vue/composition-api',
+          '..',
+          '../..',
+          // resolve(__dirname, 'packages/core/index.ts'),
+          {
+            name: 'vue-demi',
+            importNames: ['onMounted', 'onUnmounted'],
+            message: 'Use tryOnMounted and tryOnScopeDispose instead.'
+          }
+        ]
+      }
     ]
   }
 }

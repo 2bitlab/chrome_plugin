@@ -7,6 +7,13 @@ pnpm run bootstrap
 
 ```
 
+### pnpm 的 workspace monorepo
+
+```bash
+# 在某个模块下关联其他模块
+pnpm i @belloai/api --filter @belloai/chrome-extension
+```
+
 ## Technologies
 
 For the root level I'm using:
