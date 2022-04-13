@@ -1,0 +1,46 @@
+{
+  "name": "chrome_plugin",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "bootstrap": "pnpm install --ignore-scripts",
+    "dev": "vite",
+    "preview": "vite preview",
+    "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
+    "lint": "pnpm eslint . --ext=js,ts,tsx,vue,md,json --fix",
+    "format": "prettier --write ./**/*.{vue,ts,tsx,js,jsx,css,less,scss,json,md}",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-markdown": "^2.2.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.6.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "prettier": "^2.6.2",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.0",
+    "vue-tsc": "^0.29.8"
+  },
+  "resolutions": {
+    "bin-wrapper": "npm:bin-wrapper-china"
+  },
+  "engines": {
+    "node": "^12 || >=14",
+    "pnpm": "^6 || >=5"
+  },
+  "lint-staged": {
+    "*.{js,vue,ts,jsx,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{html,css,less,scss,md}": [
+      "prettier --write"
+    ]
+  }
+}
