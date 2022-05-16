@@ -4,7 +4,7 @@
   </a>
 </template>
 <script lang="ts" setup>
-import { usePageContext } from './utils/usePageContext'
+import { usePageContext } from '@/renderer/utils/usePageContext'
 const pageContext = usePageContext()
 </script>
 <style scoped>

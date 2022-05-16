@@ -2,6 +2,13 @@ import { createSSRApp, defineComponent, h, markRaw, reactive } from 'vue'
 import Layout from './Layout.vue'
 import type { Component, PageContext } from './types'
 import { setPageContext } from './utils/usePageContext'
+import { getHead } from './utils/useHead'
+
+// css
+import '@/assets/styles/main.scss'
+
+// plugins
+const plugins = import.meta.globEager('/src/plugins/*.js')
 
 export { createApp }
 
@@ -32,6 +39,13 @@ function createApp(pageContext: PageContext) {
   })
 
   const app = createSSRApp(PageWithWrapper)
+  app.use(getHead())
+
+  for (const path in plugins) {
+    plugins[path].default(app, (key: string, value: any) => {
+      app.config.globalProperties['$' + key] = value
+    })
+  }
 
   // We use `app.changePage()` to do Client Routing, see `_default.page.client.js`
   objectAssign(app, {

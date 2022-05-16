@@ -2,7 +2,7 @@ import express from 'express'
 import { createPageRenderer } from 'vite-plugin-ssr'
 import * as vite from 'vite'
 
-import { apiHandler } from '../api'
+import { apiHandler } from './api'
 
 const isProduction = process.env.NODE_ENV === 'production'
 const root = `${__dirname}/..`

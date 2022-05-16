@@ -3,6 +3,8 @@ export type Component = any
 export type PageContext = {
   Page: Component
   pageProps: Record<string, unknown>
+  initialState: any
+
   pageExports: {
     documentProps?: {
       title: string
@@ -11,5 +13,11 @@ export type PageContext = {
   documentProps?: {
     title: string
   }
-  urlPathname: string
+
+  // urlPathname: string
+
+  // set by server
+  url: string
+  cookies: Map<string, string>
+  userAgent: string
 }

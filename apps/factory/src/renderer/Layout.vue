@@ -15,15 +15,9 @@
 </template>
 
 <script lang="ts" setup>
-import Link from './Link.vue'
+import Link from '@/components/Link.vue'
 import menuData from './menu'
 </script>
-
-<style>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-</style>
 
 <style scoped>
 .logo {

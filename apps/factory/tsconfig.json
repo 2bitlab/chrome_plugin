@@ -7,11 +7,12 @@
     "moduleResolution": "Node",
     "target": "ES2017",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "types": ["vite/client"],
+    "types": ["vite/client", "element-plus/global"],
     "skipLibCheck": true,
     "esModuleInterop": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["src/*"],
+      "@server/*": ["server/*"]
     }
   },
   "ts-node": {

@@ -1,6 +1,6 @@
 import type { PageContextBuiltIn } from 'vite-plugin-ssr'
 
-import { loadData } from '@/data'
+import { loadData } from '@server/data'
 
 export { onBeforeRender }
 export { prerender }

@@ -9,10 +9,11 @@
 
   <div>new</div>
   <div>
-    <el-input />
+    <ElInput />
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ElInput } from 'element-plus'
 defineProps(['saasDirs', 'customDirs'])
 </script>
