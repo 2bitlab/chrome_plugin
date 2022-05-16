@@ -10,7 +10,7 @@ export default defineConfig({
     alias: {
       '@belloai/api': resolve(__dirname, 'packages/api/index.ts')
     },
-    dedupe: ['vue', 'vue-demi', '@vue/runtime-core']
+    dedupe: ['vue', '@vue/runtime-core']
   },
   // define: {
   //   __VUE_OPTIONS_API__: 'true',
@@ -22,7 +22,7 @@ export default defineConfig({
     setupFiles: [resolve(__dirname, 'packages/.test/setup.ts')],
     reporters: 'dot',
     deps: {
-      inline: ['vue2', '@vue/composition-api', 'vue-demi']
+      inline: ['@vue/composition-api']
     }
   }
 })

@@ -1,14 +1,26 @@
 {
   "name": "@belloai/chrome-extension",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vue-tsc --noEmit && vite build --watch",
+    "build": "vue-tsc --noEmit && vite build",
+    "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@belloai/api": "workspace:^1.0.0"
+    "@belloai/api": "workspace:^1.0.0",
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.32",
+    "@vitejs/plugin-vue": "^2.3.0",
+    "vue-tsc": "^0.29.8"
+  },
+  "resolutions": {
+    "bin-wrapper": "npm:bin-wrapper-china"
+  },
+  "engines": {
+    "node": "^12 || >=14",
+    "pnpm": "^6 || >=5"
   }
 }

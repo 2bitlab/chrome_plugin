@@ -1,0 +1,7 @@
+{
+  "name": "@belloai/chrome-extension-manifest",
+  "version": "1.0.0",
+  "description": "manifest.json 的构建工具",
+  "main": "index.ts",
+  "license": "ISC"
+}

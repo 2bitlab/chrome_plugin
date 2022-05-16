@@ -42,28 +42,20 @@ module.exports = {
     'no-restricted-globals': ['error', ...DOMGlobals, ...NodeGlobals],
     // since we target ES2015 for baseline support, we need to forbid object
     // rest spread usage (both assign and destructure)
-    'no-restricted-syntax': [
-      'error',
-      'ObjectExpression > SpreadElement',
-      'ObjectPattern > RestElement',
-      'AwaitExpression'
-    ],
+    'no-restricted-syntax': ['error', 'ObjectPattern > RestElement'],
     'no-restricted-imports': [
       'error',
       {
-        paths: [
-          'vue',
-          '@vue/composition-api',
-          '..',
-          '../..',
-          // resolve(__dirname, 'packages/core/index.ts'),
-          {
-            name: 'vue-demi',
-            importNames: ['onMounted', 'onUnmounted'],
-            message: 'Use tryOnMounted and tryOnScopeDispose instead.'
-          }
-        ]
+        paths: ['..', '../..']
       }
     ]
-  }
+  },
+  overrides: [
+    {
+      files: ['*.html'],
+      rules: {
+        'vue/comment-directive': 'off'
+      }
+    }
+  ]
 }

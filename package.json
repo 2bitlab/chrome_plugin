@@ -4,19 +4,18 @@
   "version": "0.0.0",
   "scripts": {
     "bootstrap": "pnpm install --ignore-scripts",
-    "dev": "vite",
+    "dev": "vite build apps/chrome-extension --watch",
+    "dev:f": "pnpm --filter @belloai/chrome-extension-factory dev",
     "dev:docs": "vite",
     "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
     "lint": "pnpm eslint . --ext=js,ts,tsx,vue,md,json --fix",
     "format": "prettier --write ./**/*.{vue,ts,tsx,js,jsx,css,less,scss,json,md}",
     "prepare": "husky install",
-    "test": "pnpm run test:3",
-    "test:2": "vue-demi-switch 2 vue2 && vitest run --silent",
-    "test:3": "vue-demi-switch 3 && vitest run",
-    "test:all": "nr test:3 && nr test:2 && vue-demi-switch 3",
+    "test": "vitest run",
     "test:watch": "vitest --watch"
   },
   "devDependencies": {
+    "@types/node": "^17.0.32",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "eslint": "^8.13.0",
@@ -32,9 +31,7 @@
     "typescript": "^4.5.4",
     "vite": "^2.9.0",
     "vitest": "^0.9.3",
-    "vue": "^3.2.31",
-    "vue-demi": "0.12.5",
-    "vue2": "npm:vue@^2.6.14"
+    "vue": "^3.2.31"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china"
@@ -51,10 +48,5 @@
     "*.{html,css,less,scss,md}": [
       "prettier --write"
     ]
-  },
-  "pnpm": {
-    "overrides": {
-      "vue-demi": "0.12.5"
-    }
   }
 }
