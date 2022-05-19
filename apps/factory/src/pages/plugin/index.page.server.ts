@@ -1,6 +1,6 @@
 import type { PageContextBuiltIn } from 'vite-plugin-ssr'
 
-import { loadData } from '@server/data'
+import servicesHelper from '@server/services/server'
 
 export { onBeforeRender }
 export { prerender }
@@ -8,7 +8,8 @@ export { prerender }
 async function onBeforeRender(pageContext: PageContextBuiltIn) {
   console.log('index.page.server onBeforeRender')
 
-  const dirs = loadData()
+  const dirs = await servicesHelper('PluginConfig/loadData')
+  console.log('index.page.server dirs', dirs)
 
   const pageProps = { ...dirs }
   return {

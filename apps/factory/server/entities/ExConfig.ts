@@ -3,13 +3,17 @@ import {
   ManifestConfig3
 } from '@belloai/chrome-extension-manifest'
 
-export class ExConfig {
-  manifestConfig: ManifestConfig3
-  constructor(manifestConfig: ManifestConfig3) {
-    this.manifestConfig = manifestConfig
-  }
+export default class ExConfig {
+  type: 'saas' | 'custom'
+  path_name: string
+  manifest: ManifestConfig3
 
-  static getInstance(manifestConfig: ManifestConfig3) {
-    return new ExConfig(getManifestConfig(manifestConfig))
+  constructor(instance: ExConfig) {
+    const { manifest, path_name, type } = instance
+
+    this.manifest = getManifestConfig(manifest)
+
+    this.path_name = path_name
+    this.type = type
   }
 }

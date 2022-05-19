@@ -1,6 +1,5 @@
 import fs from 'fs-extra'
 import { resolve } from 'path'
-import { ExConfig } from '../entities/ExConfig'
 import { ManifestConfig3 } from '@belloai/chrome-extension-manifest'
 
 function getPath(path: string) {
@@ -15,8 +14,11 @@ export const loadData = () => {
   console.log('saasPath', saasPath)
   console.log('customPath', customPath)
 
-  const saasDirs = fs.ensureDirSync(saasPath)
-  const customDirs = fs.ensureDirSync(customPath)
+  fs.ensureDirSync(saasPath)
+  const saasDirs = fs.readdirSync(saasPath)
+
+  fs.ensureDirSync(customPath)
+  const customDirs = fs.readdirSync(customPath)
 
   console.log('saasDirs', saasDirs)
   console.log('customDirs', customDirs)
@@ -32,10 +34,9 @@ export const saveConfig = (
   pathName: string,
   config: ManifestConfig3
 ) => {
-  const { manifestConfig } = ExConfig.getInstance(config)
-
-  const path = getPath(`${type}/${pathName}/manifest.json`)
-
-  // fs.ensureFileSync(path)
-  fs.writeJsonSync(path, manifestConfig)
+  const path = getPath(`${type || 'saas'}/${pathName}/manifest.json`)
+  fs.ensureFileSync(path)
+  fs.writeJsonSync(path, config, {
+    spaces: 2
+  })
 }

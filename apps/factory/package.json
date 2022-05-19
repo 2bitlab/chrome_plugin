@@ -16,8 +16,10 @@
   },
   "dependencies": {
     "@belloai/chrome-extension-manifest": "workspace:^1.0.0",
+    "@belloai/chrome-extension-utils": "workspace:^1.0.0",
     "@types/express": "^4.17.13",
     "@types/fs-extra": "^9.0.13",
+    "@types/lodash": "^4.14.182",
     "@types/node": "^17.0.19",
     "@types/node-fetch": "^2.5.12",
     "@types/nprogress": "^0.2.0",
@@ -30,6 +32,7 @@
     "element-plus": "^2.2.0",
     "express": "^4.17.3",
     "fs-extra": "^10.1.0",
+    "lodash": "^4.17.21",
     "node-fetch": "^2.6.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.14",

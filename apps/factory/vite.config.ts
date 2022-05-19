@@ -3,22 +3,12 @@ import md from 'vite-plugin-md'
 import ssr from 'vite-plugin-ssr/plugin'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { UserConfig } from 'vite'
 import yaml from '@rollup/plugin-yaml'
-import {
-  ElementPlusResolve,
-  createStyleImportPlugin
-} from 'vite-plugin-style-import'
 
 import { resolve } from 'path'
 
 const config: UserConfig = {
-  // server: {
-  //   watch: {
-  //     ignored: ['data/**']
-  //   }
-  // },
   resolve: {
     alias: [
       {
@@ -49,20 +39,15 @@ const config: UserConfig = {
         // presets
         'vue',
         '@vueuse/head'
-      ],
+      ]
       // dts: 'src/auto-imports.d.ts',
-      resolvers: [ElementPlusResolver()]
     }),
     Components({
       dirs: ['src/components'],
       extensions: ['vue', 'ts'],
       dts: 'src/components.d.ts'
-      // resolvers: [ElementPlusResolver()]
     }),
-    yaml(),
-    createStyleImportPlugin({
-      resolves: [ElementPlusResolve()]
-    })
+    yaml()
   ],
   // Neeed if using an ESM-only library. This is not the case of this example and it's, in general, a rare case. But such situation will increasingly occur as ESM-only libraries emerge.
   build: {

@@ -1,10 +1,36 @@
 import { RequestHandler } from 'express'
 
+import { serverApiServices } from '../services/server'
+
 export const apiHandler: RequestHandler = async (req, res) => {
-  const url = req.originalUrl
+  const { body, query, params, originalUrl: url, method } = req
+  // console.log('api req', req)
+
+  console.log('api method', method)
   console.log('api url', url)
+  console.log('api body', body)
+  console.log('api query', query)
+  console.log('api params', params)
 
-  res.status(200)
+  let data
+  let status = 200
 
-  res.json({ url })
+  try {
+    data = await serverApiServices({
+      url,
+      method,
+      params,
+      query,
+      body
+    })
+  } catch (error) {
+    console.error('apiHandler error', error)
+    data = {
+      msg: `${error}`
+    }
+    status = 400
+  }
+
+  res.status(status)
+  res.json(data)
 }

@@ -4,11 +4,14 @@ import type { Component, PageContext } from './types'
 import { setPageContext } from './utils/usePageContext'
 import { getHead } from './utils/useHead'
 
+import ElementUi from 'element-plus'
+
 // css
 import '@/assets/styles/main.scss'
+import 'element-plus/dist/index.css'
 
 // plugins
-const plugins = import.meta.globEager('/src/plugins/*.js')
+const plugins = import.meta.globEager('/src/plugins/*.ts')
 
 export { createApp }
 
@@ -40,6 +43,7 @@ function createApp(pageContext: PageContext) {
 
   const app = createSSRApp(PageWithWrapper)
   app.use(getHead())
+  app.use(ElementUi)
 
   for (const path in plugins) {
     plugins[path].default(app, (key: string, value: any) => {

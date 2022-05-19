@@ -1,0 +1,12 @@
+{
+  "name": "@belloai/chrome-extension-utils",
+  "version": "1.0.0",
+  "description": "工具类",
+  "main": "index.ts",
+  "license": "ISC",
+  "dependencies": {
+    "@types/lodash": "^4.14.182",
+    "lodash": "^4.17.21",
+    "qs": "^6.10.3"
+  }
+}

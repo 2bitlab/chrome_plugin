@@ -1,6 +1,6 @@
 import { getManifestConfig } from './index'
 
-describe('@belloai/mainfest', () => {
+describe('@belloai/chrome-extension-manifest', () => {
   it('test', () => {
     expect(
       JSON.stringify(

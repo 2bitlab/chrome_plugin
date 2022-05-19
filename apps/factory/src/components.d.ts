@@ -7,6 +7,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./components/Counter.vue')['default']
     Link: typeof import('./components/Link.vue')['default']
+    ObjForm: typeof import('./components/ObjForm.vue')['default']
   }
 }
 

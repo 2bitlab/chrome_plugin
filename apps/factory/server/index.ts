@@ -23,6 +23,7 @@ async function startServer() {
     app.use(viteDevServer.middlewares)
   }
   app.use(express.urlencoded({ extended: true }))
+  app.use(express.json())
 
   const renderPage = createPageRenderer({ viteDevServer, isProduction, root })
 
