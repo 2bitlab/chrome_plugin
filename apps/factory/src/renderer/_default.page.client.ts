@@ -3,19 +3,26 @@ import { createApp } from './app'
 import { useClientRouter } from 'vite-plugin-ssr/client/router'
 import type { PageContext } from './types'
 import type { PageContextBuiltInClient } from 'vite-plugin-ssr/client/router'
-import { createPinia } from 'pinia'
+import { getActivePinia } from 'pinia'
 import NProgress from 'nprogress'
+
+import { usePluginConfigStore } from '@/stores/pluginConfig'
+import servicesHelper from '@server/services/client'
+import { setServicesHelper } from '@/renderer/utils/useServicesHelper'
 
 let app: ReturnType<typeof createApp>
 const { hydrationPromise } = useClientRouter({
   render(pageContext: PageContextBuiltInClient & PageContext) {
+    setServicesHelper(servicesHelper)
     if (!app) {
       app = createApp(pageContext)
 
       // create and set initial state for store
-      const store = createPinia()
-      app.use(store)
-      store.state.value = pageContext.initialState
+      const store = getActivePinia()
+      if (store) {
+        store.state.value = pageContext.initialState
+        usePluginConfigStore().fetchDirs()
+      }
 
       app.mount('#app')
     } else {

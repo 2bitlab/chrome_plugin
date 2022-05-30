@@ -5,6 +5,7 @@ import { setPageContext } from './utils/usePageContext'
 import { getHead } from './utils/useHead'
 
 import ElementUi from 'element-plus'
+import { createPinia } from 'pinia'
 
 // css
 import '@/assets/styles/main.scss'
@@ -44,6 +45,9 @@ function createApp(pageContext: PageContext) {
   const app = createSSRApp(PageWithWrapper)
   app.use(getHead())
   app.use(ElementUi)
+
+  const store = createPinia()
+  app.use(store)
 
   for (const path in plugins) {
     plugins[path].default(app, (key: string, value: any) => {

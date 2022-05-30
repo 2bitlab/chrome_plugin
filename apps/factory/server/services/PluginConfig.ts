@@ -1,6 +1,6 @@
 // import ExConfig from '@server/entities/ExConfig'
 
-import { saveConfig, loadData } from '../data'
+import { saveConfig, loadData, getConfig } from '../data'
 
 import ExConfig from '../entities/ExConfig'
 
@@ -19,5 +19,15 @@ export default class PluginConfigService {
 
   static async loadData() {
     return loadData()
+  }
+
+  static async getData({
+    type,
+    path_name
+  }: {
+    type: string
+    path_name: string
+  }) {
+    return getConfig(`${type}/${path_name}`)
   }
 }

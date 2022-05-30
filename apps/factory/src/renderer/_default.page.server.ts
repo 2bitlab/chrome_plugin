@@ -4,8 +4,12 @@ import { createApp } from './app'
 import type { PageContext } from './types'
 import type { PageContextBuiltIn } from 'vite-plugin-ssr'
 import { renderHeadToString } from '@vueuse/head'
-import { createPinia } from 'pinia'
+import { getActivePinia } from 'pinia'
 import { getHead } from '@/renderer/utils/useHead'
+
+import { usePluginConfigStore } from '@/stores/pluginConfig'
+import servicesHelper from '@server/services/server'
+import { setServicesHelper } from '@/renderer/utils/useServicesHelper'
 
 export { passToClient }
 export { render }
@@ -13,14 +17,17 @@ export { render }
 const passToClient = ['pageProps', 'documentProps', 'initialState']
 
 async function render(pageContext: PageContextBuiltIn & PageContext) {
+  setServicesHelper(servicesHelper)
   const app = createApp(pageContext)
-
-  const store = createPinia()
-  app.use(store)
 
   const stream = renderToNodeStream(app)
 
-  pageContext.initialState = store.state.value
+  const store = getActivePinia()
+  if (store) {
+    pageContext.initialState = store.state.value
+
+    await usePluginConfigStore().fetchDirs()
+  }
 
   const { headTags, htmlAttrs, bodyAttrs } = renderHeadToString(getHead())
 

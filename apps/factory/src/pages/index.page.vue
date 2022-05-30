@@ -3,7 +3,6 @@
   This page is:
   <ul>
     <li>Rendered to HTML.</li>
-    <li>Interactive. <Counter /></li>
   </ul>
   <p>
     We use <code>useClientRouter()</code> to do Client Routing.
@@ -12,7 +11,6 @@
 </template>
 
 <script lang="ts" setup>
-import Counter from '@/components/Counter.vue'
 import { navigate } from 'vite-plugin-ssr/client/router'
 
 const randomNavigation = () => {

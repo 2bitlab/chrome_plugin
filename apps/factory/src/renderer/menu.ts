@@ -1,22 +1,10 @@
 export default [
   {
-    href: '/',
-    label: 'Welcome'
+    href: '/config/saas',
+    label: 'SaaS'
   },
   {
-    href: '/markdown',
-    label: 'Markdown'
-  },
-  {
-    href: '/star-wars',
-    label: 'Data Fetching'
-  },
-  {
-    href: '/hello/alice',
-    label: 'Routing'
-  },
-  {
-    href: '/plugin',
-    label: 'Plugin'
+    href: '/config/custom',
+    label: '私有化'
   }
 ]

@@ -13,7 +13,7 @@
 
 <script lang="ts" setup>
 import { isString, isObject, get, set } from 'lodash'
-import { readonly, reactive, watch, computed } from 'vue'
+import { reactive, watch, computed } from 'vue'
 
 interface DefineFormItem {
   label: string
@@ -54,8 +54,6 @@ const formItems = computed(() => {
   })
 })
 
-const modelValue = readonly(props.modelValue)
-
 watch(formData, newValue => {
   console.log('formData watch', newValue)
 
@@ -75,15 +73,15 @@ watch(formData, newValue => {
   //   'formData watch JSON.stringify(newObj) !== JSON.stringify(modelValue)',
   //   JSON.stringify(newObj) !== JSON.stringify(modelValue)
   // )
-  if (JSON.stringify(newObj) !== JSON.stringify(modelValue)) {
+  if (JSON.stringify(newObj) !== JSON.stringify(props.modelValue)) {
     emits('update:modelValue', newObj)
   }
 })
 
 watch(
-  modelValue,
+  () => props.modelValue,
   newValue => {
-    // console.log('modelValue watch', newValue)
+    console.log('modelValue watch', newValue)
 
     objKeys.value.map(key => {
       const value = get(newValue, key)

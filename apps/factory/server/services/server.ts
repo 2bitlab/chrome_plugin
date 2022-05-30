@@ -2,6 +2,7 @@ import PluginConfig from './PluginConfig'
 
 import {
   FetchInfo2ServiceInfoProps,
+  ServicesHelper,
   servicesUtils
 } from '@belloai/chrome-extension-utils'
 
@@ -11,11 +12,15 @@ const serviceClassMap: any = { PluginConfig }
 
 export const serverApiServices = async (args: FetchInfo2ServiceInfoProps) => {
   const { funcName, name, props } = (fetchInfo2ServiceInfo(args) || {}) as any
+  console.log('serverApiServices', name, funcName, props)
 
   return await serverServices(`${name}/${funcName}`, props)
 }
 
-export const serverServices = async (path: string, props?: any) => {
+export const serverServices: ServicesHelper = async (
+  path: string,
+  props?: any
+) => {
   console.log('serverServices', path, props)
 
   const [name, funcName] = path.split('/')

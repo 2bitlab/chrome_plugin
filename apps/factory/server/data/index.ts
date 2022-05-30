@@ -34,9 +34,23 @@ export const saveConfig = (
   pathName: string,
   config: ManifestConfig3
 ) => {
+  console.log('saveConfig')
   const path = getPath(`${type || 'saas'}/${pathName}/manifest.json`)
+  console.log('saveConfig', path, config)
   fs.ensureFileSync(path)
   fs.writeJsonSync(path, config, {
     spaces: 2
   })
+}
+
+export const getConfig = (fullPathName: string) => {
+  console.log('getConfig')
+  const path = getPath(`${fullPathName}/manifest.json`)
+  console.log('getConfig', path, fullPathName)
+
+  const manifest = fs.readJSONSync(path)
+  return {
+    fullPathName,
+    manifest
+  }
 }

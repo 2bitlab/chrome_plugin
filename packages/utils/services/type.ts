@@ -38,3 +38,5 @@ export interface FetchInfo2ServiceInfoProps {
   query: object
   body: object
 }
+
+export type ServicesHelper = (path: string, props?: any) => Promise<any>
