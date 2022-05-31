@@ -57,5 +57,11 @@ module.exports = {
         'vue/comment-directive': 'off'
       }
     }
+    // {
+    //   files: ['apps/chrome-extension/**/*.ts'],
+    //   rules: {
+    //     'vue/comment-directive': 'off'
+    //   }
+    // },
   ]
 }
