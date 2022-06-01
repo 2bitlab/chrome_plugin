@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "bootstrap": "pnpm install --ignore-scripts",
-    "dev": "vite build apps/chrome-extension --watch",
+    "dev": "pnpm --filter @belloai/chrome-extension dev",
     "dev:f": "pnpm --filter @belloai/chrome-extension-factory dev",
     "dev:docs": "vite",
     "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",

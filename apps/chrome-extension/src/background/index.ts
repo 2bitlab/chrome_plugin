@@ -1,3 +1,4 @@
-console.log('init background')
+console.log('background/index.ts')
+import { test } from './test'
 
-export default {}
+test()
